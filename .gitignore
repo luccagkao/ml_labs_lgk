@@ -174,3 +174,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Arquivos do uv astral que não devem ser versionados
+.python-version
+pyproject.toml
+uv.lock
