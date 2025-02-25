@@ -2,4 +2,4 @@
 '''
 from pathlib import Path
 
-DATA_DIR = Path(__file__).resolve().parents[5] / 'datasets' / 'housing'
+DATA_DIR = Path(__file__).resolve().parents[6] / 'datasets' / 'housing'

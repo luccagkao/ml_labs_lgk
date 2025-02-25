@@ -2,9 +2,8 @@ name: ml
 channels:
   - defaults
 dependencies:
-  - ipykernel
   - isort
-  - jupyter
+  - jupyterlab
   - matplotlib
   - numpy
   - pandas

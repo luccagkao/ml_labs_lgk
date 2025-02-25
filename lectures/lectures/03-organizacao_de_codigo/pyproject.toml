@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "car_prices"
+description = "Código do projeto Car Prices"
+version = "0.1.0"
+readme = "README.md"
+dependencies = [
+    "python-dotenv",
+    "pandas",
+    "requests",
+]
