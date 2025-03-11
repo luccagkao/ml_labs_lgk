@@ -38,22 +38,33 @@ def _unpack_car_dataset(raw_dataset_path: Path, project_data_dir: Path) -> None:
         zip_ref.extractall(project_data_dir)
 
 
-def _fetch_and_unpack_car_dataset(project_data_dir: Path) -> None:
+def _fetch_and_unpack_car_dataset(
+    project_data_dir: Path,
+    remove_original: bool,
+) -> None:
     '''Fetches and unpacks the car dataset from Kaggle.
     '''
     raw_dataset_path = project_data_dir / _COMPRESSED_FILENAME
     _fetch_car_dataset(raw_dataset_path, project_data_dir)
     _unpack_car_dataset(raw_dataset_path, project_data_dir)
+    if remove_original:
+        raw_dataset_path.unlink()
 
 
-def load_car_dataset(data_dir: str | Path) -> pd.DataFrame:
+def load_car_dataset(
+    data_dir: str | Path,
+    remove_original: bool = False,
+) -> pd.DataFrame:
     '''Loads the car dataset from the data_dir.
     '''
     data_dir = Path(data_dir)
     project_data_dir = data_dir / _PROJECT_NAME
     dataset_path = project_data_dir / _DATASET_FILENAME
     if not dataset_path.exists():
-        _fetch_and_unpack_car_dataset(project_data_dir)
+        _fetch_and_unpack_car_dataset(
+            project_data_dir,
+            remove_original=remove_original,
+        )
     dataset = pd.read_csv(dataset_path)
     return dataset
 
